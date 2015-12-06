@@ -3,7 +3,7 @@ Examples on how to use [twitter4s](https://github.com/DanielaSfregola/twitter4s)
 
 Usage
 -----
-Change the `application.conf` file with your consumer and access tokens (see [Twitter4s README](https://github.com/DanielaSfregola/twitter4s#prerequisites) for more information):
+Change the `application.conf` file with your consumer and access tokens (see [twitter4s README](https://github.com/DanielaSfregola/twitter4s#prerequisites) for more information):
 ```scala
 twitter { // TODO - change these configs! see https://github.com/DanielaSfregola/twitter4s#prerequisites
   consumer {
