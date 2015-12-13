@@ -2,7 +2,7 @@ import com.danielasfregola.twitter4s.entities.Tweet
 import com.typesafe.config.ConfigFactory
 import utils.FileSupport
 
-object ScalaXStatistics extends App with FileSupport {
+object SimpleStatistics extends App with FileSupport {
 
   type Record[T] = (T, Int)
 
