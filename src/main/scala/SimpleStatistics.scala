@@ -55,7 +55,7 @@ object SimpleStatistics extends App with FileSupport {
     }
   }
 
-  def topLikedTweets(tweets: Seq[Tweet], n: Int = 10) = {
+  def topFavoriteTweets(tweets: Seq[Tweet], n: Int = 10) = {
     val result = tweets.sortBy(t => - t.favorite_count).take(n)
     toPrettyString("TOP FAVORITE TWEETS", result) { tweet =>
       s"${tweet.text.replaceAll("\n"," ")} (by @${tweet.user.map(_.screen_name).getOrElse("unknown")}, liked ${tweet.favorite_count} times)"
@@ -77,7 +77,7 @@ object SimpleStatistics extends App with FileSupport {
   println(topActiveUsers(tweets))
   println(topMentionedUsers(tweets))
   println(topRetweets(tweets))
-  println(topLikedTweets(tweets))
+  println(topFavoriteTweets(tweets))
 
 
 }
