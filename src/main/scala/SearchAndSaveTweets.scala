@@ -9,7 +9,7 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 
-object DownloadTweets extends App with FileSupport {
+object SearchAndSaveTweets extends App with FileSupport {
 
   // TODO - Make sure to change the application.conf file with the right consumer and access tokens!
   val client = new TwitterClient()
