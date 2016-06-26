@@ -4,8 +4,8 @@ version := "0.1"
 
 scalaVersion := "2.11.7"
 
-resolvers += "Maven central" at "http://repo1.maven.org/maven2/"
+resolvers += Resolver.sonatypeRepo("releases")
 
 libraryDependencies ++= Seq(
-  "com.danielasfregola" %% "twitter4s" % "0.1"
+  "com.danielasfregola" %% "twitter4s" % "0.2"
 )

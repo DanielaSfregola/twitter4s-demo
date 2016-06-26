@@ -78,6 +78,4 @@ object SimpleStatistics extends App with FileSupport {
   println(topMentionedUsers(tweets))
   println(topRetweets(tweets))
   println(topFavoriteTweets(tweets))
-
-
 }
