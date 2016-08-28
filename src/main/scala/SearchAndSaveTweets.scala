@@ -15,15 +15,15 @@ object SearchAndSaveTweets extends App with FileSupport {
   val client = new TwitterClient()
 
   def searchTweets(query: String, max_id: Option[Long] = None): Future[Seq[Tweet]] = {
-    def extractNextMaxId(params: String): Option[Long] = {
+    def extractNextMaxId(params: Option[String]): Option[Long] = {
       //example: "?max_id=658200158442790911&q=%23scala&include_entities=1&result_type=mixed"
-      params.split("&").find(_.contains("max_id")).map(_.split("=")(1).toLong)
+      params.getOrElse("").split("&").find(_.contains("max_id")).map(_.split("=")(1).toLong)
     }
 
     client.searchTweet(query, count = 100, result_type = ResultType.Recent, max_id = max_id).flatMap { result =>
         val nextMaxId = extractNextMaxId(result.search_metadata.next_results)
         val tweets = result.statuses
-        if (!tweets.isEmpty) searchTweets(query, nextMaxId).map(_ ++ tweets)
+        if (tweets.nonEmpty) searchTweets(query, nextMaxId).map(_ ++ tweets)
         else Future(tweets.sortBy(_.created_at))
       } recover { case _ => Seq.empty }
   }
