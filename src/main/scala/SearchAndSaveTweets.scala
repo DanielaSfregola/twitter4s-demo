@@ -1,5 +1,5 @@
 
-import com.danielasfregola.twitter4s.TwitterClient
+import com.danielasfregola.twitter4s.TwitterRestClient
 import com.danielasfregola.twitter4s.entities.Tweet
 import com.danielasfregola.twitter4s.entities.enums.ResultType
 import com.typesafe.config.ConfigFactory
@@ -11,8 +11,8 @@ import scala.concurrent.Future
 
 object SearchAndSaveTweets extends App with FileSupport {
 
-  // TODO - Make sure to change the application.conf file with the right consumer and access tokens!
-  val client = new TwitterClient()
+  // TODO - Make sure to define your consumer and access tokens!
+  val client = TwitterRestClient()
 
   def searchTweets(query: String, max_id: Option[Long] = None): Future[Seq[Tweet]] = {
     def extractNextMaxId(params: Option[String]): Option[Long] = {

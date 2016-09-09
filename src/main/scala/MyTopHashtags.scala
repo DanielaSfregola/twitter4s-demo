@@ -1,4 +1,4 @@
-import com.danielasfregola.twitter4s.TwitterClient
+import com.danielasfregola.twitter4s.TwitterRestClient
 import com.danielasfregola.twitter4s.entities.{HashTag, Tweet}
 
 import scala.concurrent.ExecutionContext.Implicits.global
@@ -14,8 +14,8 @@ object MyTopHashtags extends App {
     hashtagFrequencies.toSeq.sortBy { case (entity, frequency) => -frequency }.take(n)
   }
 
-  // TODO - Make sure to change the application.conf file with the right consumer and access tokens!
-  val client = new TwitterClient()
+  // TODO - Make sure to define your consumer and access tokens!
+  val client = TwitterRestClient()
 
   client.getHomeTimeline(count = 200).map { tweets =>
     val topHashtags: Seq[((String, Int), Int)] = getTopHashtags(tweets).zipWithIndex

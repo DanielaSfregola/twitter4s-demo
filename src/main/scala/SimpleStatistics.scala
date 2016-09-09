@@ -9,7 +9,7 @@ object SimpleStatistics extends App with FileSupport {
   def getTweets(filename: String): Seq[Tweet] = fromJsonFileAs[Seq[Tweet]](filename)
 
   def top[T](f: Tweet => Seq[T], n: Int)(tweets: Seq[Tweet]): Seq[Record[T]] = {
-   val tCount = tweets.map(f).flatten.groupBy(identity).mapValues(_.size)
+   val tCount = tweets.flatMap(f).groupBy(identity).mapValues(_.size)
     tCount.toSeq.sortBy { case (t, frequency) => -frequency }.take(n)
   }
   
