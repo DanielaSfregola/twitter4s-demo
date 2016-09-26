@@ -1,9 +1,11 @@
+package rest
+
 import com.danielasfregola.twitter4s.TwitterRestClient
 import com.danielasfregola.twitter4s.entities.{HashTag, Tweet}
 
 import scala.concurrent.ExecutionContext.Implicits.global
 
-object MyTopHashtags extends App {
+object UserTopHashtags extends App {
 
   def getTopHashtags(tweets: Seq[Tweet], n: Int = 10): Seq[(String, Int)] = {
     val hashtags: Seq[Seq[HashTag]] = tweets.map { tweet =>
@@ -17,10 +19,12 @@ object MyTopHashtags extends App {
   // TODO - Make sure to define your consumer and access tokens!
   val client = TwitterRestClient()
 
-  client.getHomeTimeline(count = 200).map { tweets =>
+  val user = "odersky"
+
+  client.getUserTimelineForUser(screen_name = user, count = 200).map { tweets =>
     val topHashtags: Seq[((String, Int), Int)] = getTopHashtags(tweets).zipWithIndex
     val rankings = topHashtags.map { case ((entity, frequency), idx) => s"[${idx + 1}] $entity (found $frequency times)"}
-    println("MY TOP HASHTAGS:")
+    println(s"${user.toUpperCase}'S TOP HASHTAGS:")
     println(rankings.mkString("\n"))
   }
 

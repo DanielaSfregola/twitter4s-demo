@@ -1,3 +1,5 @@
+package rest
+
 
 import com.danielasfregola.twitter4s.TwitterRestClient
 import com.danielasfregola.twitter4s.entities.Tweet

@@ -1,4 +1,4 @@
-package utils
+package rest.utils
 
 import java.io.PrintWriter
 import java.text.SimpleDateFormat
