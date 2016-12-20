@@ -21,7 +21,7 @@ object UserTopHashtags extends App {
 
   val user = "odersky"
 
-  client.getUserTimelineForUser(screen_name = user, count = 200).map { tweets =>
+  client.userTimelineForUser(screen_name = user, count = 200).map { tweets =>
     val topHashtags: Seq[((String, Int), Int)] = getTopHashtags(tweets).zipWithIndex
     val rankings = topHashtags.map { case ((entity, frequency), idx) => s"[${idx + 1}] $entity (found $frequency times)"}
     println(s"${user.toUpperCase}'S TOP HASHTAGS:")

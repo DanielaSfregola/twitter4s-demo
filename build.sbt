@@ -7,5 +7,5 @@ scalaVersion := "2.11.7"
 resolvers += Resolver.sonatypeRepo("releases")
 
 libraryDependencies ++= Seq(
-  "com.danielasfregola" %% "twitter4s" % "2.1"
+  "com.danielasfregola" %% "twitter4s" % "3.0"
 )

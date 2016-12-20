@@ -19,7 +19,7 @@ object MyTopHashtags extends App {
   // TODO - Make sure to define your consumer and access tokens!
   val client = TwitterRestClient()
 
-  client.getHomeTimeline(count = 200).map { tweets =>
+  client.homeTimeline(count = 200).map { tweets =>
     val topHashtags: Seq[((String, Int), Int)] = getTopHashtags(tweets).zipWithIndex
     val rankings = topHashtags.map { case ((entity, frequency), idx) => s"[${idx + 1}] $entity (found $frequency times)"}
     println("MY TOP HASHTAGS:")
