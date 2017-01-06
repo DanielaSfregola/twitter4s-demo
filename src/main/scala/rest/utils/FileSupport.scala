@@ -3,11 +3,11 @@ package rest.utils
 import java.io.PrintWriter
 import java.text.SimpleDateFormat
 
-import com.danielasfregola.twitter4s.http.unmarshalling.CustomSerializers
+import com.danielasfregola.twitter4s.http.serializers.CustomSerializers
+import de.heikoseeberger.akkahttpjson4s.Json4sSupport
 import org.json4s.{DefaultFormats, Formats}
 import org.json4s.native.JsonMethods._
 import org.json4s.native.Serialization
-import spray.httpx.Json4sSupport
 
 import scala.io.Source
 
