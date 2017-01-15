@@ -13,5 +13,5 @@ scalacOptions in ThisBuild ++= Seq("-language:postfixOps",
   "-deprecation")
 
 libraryDependencies ++= Seq(
-  "com.danielasfregola" %% "twitter4s" % "4.0"
+  "com.danielasfregola" %% "twitter4s" % "4.1"
 )
