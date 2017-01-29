@@ -3,7 +3,9 @@ package rest
 import com.danielasfregola.twitter4s.TwitterRestClient
 import com.danielasfregola.twitter4s.entities.{HashTag, Tweet}
 
+import scala.concurrent.Await
 import scala.concurrent.ExecutionContext.Implicits.global
+import scala.concurrent.duration.Duration
 
 object UserTopHashtags extends App {
 
@@ -21,11 +23,16 @@ object UserTopHashtags extends App {
 
   val user = "odersky"
 
-  client.userTimelineForUser(screen_name = user, count = 200).map { tweets =>
+  val result = client.userTimelineForUser(screen_name = user, count = 200).map { tweets =>
     val topHashtags: Seq[((String, Int), Int)] = getTopHashtags(tweets).zipWithIndex
     val rankings = topHashtags.map { case ((entity, frequency), idx) => s"[${idx + 1}] $entity (found $frequency times)"}
     println(s"${user.toUpperCase}'S TOP HASHTAGS:")
     println(rankings.mkString("\n"))
   }
+
+  // NB: Avoid waiting for futures in production!
+  // This should be used for demo purposes only
+  try Await.result(result, Duration.Inf)
+  finally client.close
 
 }

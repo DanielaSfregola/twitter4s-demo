@@ -4,10 +4,11 @@ import com.danielasfregola.twitter4s.TwitterRestClient
 import com.danielasfregola.twitter4s.entities.Tweet
 import com.danielasfregola.twitter4s.entities.enums.ResultType
 import com.typesafe.config.ConfigFactory
-import utils.FileSupport
+import rest.utils.FileSupport
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.Future
+import scala.concurrent.duration.Duration
+import scala.concurrent.{Await, Future}
 
 
 object SearchAndSaveTweets extends App with FileSupport {
@@ -34,10 +35,14 @@ object SearchAndSaveTweets extends App with FileSupport {
     config.getString("tweets.scalax")
   }
 
-  searchTweets("#scalax").map { tweets =>
+  val result = searchTweets("#scalax").map { tweets =>
     println(s"Downloaded ${tweets.size} tweets")
     toFileAsJson(filename, tweets)
     println(s"Tweets saved to file $filename")
   }
 
+  // NB: Avoid waiting for futures in production!
+  // This should be used for demo purposes only
+  try Await.result(result, Duration.Inf)
+  finally client.close
 }

@@ -5,9 +5,9 @@ import java.text.SimpleDateFormat
 
 import com.danielasfregola.twitter4s.http.serializers.CustomSerializers
 import de.heikoseeberger.akkahttpjson4s.Json4sSupport
-import org.json4s.{DefaultFormats, Formats}
 import org.json4s.native.JsonMethods._
 import org.json4s.native.Serialization
+import org.json4s.{DefaultFormats, Formats}
 
 import scala.io.Source
 

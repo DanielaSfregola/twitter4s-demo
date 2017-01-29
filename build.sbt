@@ -13,5 +13,6 @@ scalacOptions in ThisBuild ++= Seq("-language:postfixOps",
   "-deprecation")
 
 libraryDependencies ++= Seq(
-  "com.danielasfregola" %% "twitter4s" % "4.1"
+  "com.danielasfregola" %% "twitter4s" % "4.2",
+  "ch.qos.logback" % "logback-classic" % "1.1.9"
 )

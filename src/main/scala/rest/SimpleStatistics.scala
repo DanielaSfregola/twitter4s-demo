@@ -2,7 +2,7 @@ package rest
 
 import com.danielasfregola.twitter4s.entities.Tweet
 import com.typesafe.config.ConfigFactory
-import utils.FileSupport
+import rest.utils.FileSupport
 
 object SimpleStatistics extends App with FileSupport {
 
