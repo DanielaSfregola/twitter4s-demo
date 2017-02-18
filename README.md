@@ -13,6 +13,7 @@ TwitterRestClient Examples
 - [SearchAndSaveTweets](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/SearchAndSaveTweets.scala) searches all the tweets matching some query and it saves the result as JSON in a file. In this example, the query used is `#scalax` and the generated file is `src/main/resources/tweets/scalax.json`.
 - [SimpleStatistics](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/SimpleStatistics.scala) loads tweets from a file, in this case `src/main/resources/tweets/scalax.json`, and it computes some simple statistics: top hashtags, top active users, top mentioned users, top retweets, top favorite tweets.
 - [UserTopHashtags](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/UserTopHashtags.scala) displays the top 10 most common hashtags in a user timeline. In this example, we use Martin Odersky's account.
+- [TrendingTopics](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/TrendingTopics.scala) displays the top 10 trending topics worldwide, and in a given location (by text and by geolocation).
 
 Bugs
 ----
