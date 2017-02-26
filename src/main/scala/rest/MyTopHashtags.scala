@@ -21,7 +21,8 @@ object MyTopHashtags extends App {
   // TODO - Make sure to define your consumer and access tokens!
   val client = TwitterRestClient()
 
-  val result = client.homeTimeline(count = 200).map { tweets =>
+  val result = client.homeTimeline(count = 200).map { ratedData =>
+    val tweets = ratedData.data
     val topHashtags: Seq[((String, Int), Int)] = getTopHashtags(tweets).zipWithIndex
     val rankings = topHashtags.map {
       case ((entity, frequency), idx) => s"[${idx + 1}] $entity (found $frequency times)"
@@ -29,9 +30,4 @@ object MyTopHashtags extends App {
     println("MY TOP HASHTAGS:")
     println(rankings.mkString("\n"))
   }
-
-  // NB: Avoid waiting for futures in production!
-  // This should be used for demo purposes only
-  try Await.result(result, Duration.Inf)
-  finally client.close
 }

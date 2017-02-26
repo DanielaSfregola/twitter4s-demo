@@ -8,9 +8,6 @@ import scala.concurrent.Await
 import scala.concurrent.duration.Duration
 import scala.util.{Success, Try}
 
-/**
-  * Created by Joseph on 18/02/2017.
-  */
 object TrendingTopics extends App {
 
   // TODO - Make sure to define your consumer and access tokens!
@@ -24,21 +21,21 @@ object TrendingTopics extends App {
     }
 
   lazy val globalTrends = for {
-    globalTrendsResult <- client.globalTrends()
+    globalTrendsResult <- client.globalTrends().map(_.data)
   } yield printTrendingTopics(globalTrendsResult)
 
   lazy val ukTrends = for {
-    locations <- client.locationTrends()
+    locations <- client.locationTrends.map(_.data)
     ukWoeid = locations.find(_.name == "United Kingdom").map(_.woeid)
     if ukWoeid.isDefined
-    ukTrendsResult <- client.trends(ukWoeid.get)
+    ukTrendsResult <- client.trends(ukWoeid.get).map(_.data)
   } yield printTrendingTopics(ukTrendsResult)
 
   lazy val nearMeTrends = for {
-    locationNearestMe <- client.closestLocationTrends(43.6426, -79.3871)
+    locationNearestMe <- client.closestLocationTrends(43.6426, -79.3871).map(_.data)
     woeId = locationNearestMe.headOption.map(_.woeid)
     if woeId.isDefined
-    locationNearestMeResult <- client.trends(woeId.get)
+    locationNearestMeResult <- client.trends(woeId.get).map(_.data)
   } yield printTrendingTopics(locationNearestMeResult)
 
   val allTheTrends = for {
@@ -46,7 +43,5 @@ object TrendingTopics extends App {
     _ <- ukTrends
     _ <- nearMeTrends
   } yield ()
-  try Await.result(allTheTrends, Duration.Inf)
-  finally client.close
 
 }

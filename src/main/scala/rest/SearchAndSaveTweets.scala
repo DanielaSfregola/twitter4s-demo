@@ -22,7 +22,8 @@ object SearchAndSaveTweets extends App with FileSupport {
       params.getOrElse("").split("&").find(_.contains("max_id")).map(_.split("=")(1).toLong)
     }
 
-    client.searchTweet(query, count = 100, result_type = ResultType.Recent, max_id = max_id).flatMap { result =>
+    client.searchTweet(query, count = 100, result_type = ResultType.Recent, max_id = max_id).flatMap { ratedData =>
+        val result = ratedData.data
         val nextMaxId = extractNextMaxId(result.search_metadata.next_results)
         val tweets = result.statuses
         if (tweets.nonEmpty) searchTweets(query, nextMaxId).map(_ ++ tweets)
@@ -40,9 +41,4 @@ object SearchAndSaveTweets extends App with FileSupport {
     toFileAsJson(filename, tweets)
     println(s"Tweets saved to file $filename")
   }
-
-  // NB: Avoid waiting for futures in production!
-  // This should be used for demo purposes only
-  try Await.result(result, Duration.Inf)
-  finally client.close
 }
