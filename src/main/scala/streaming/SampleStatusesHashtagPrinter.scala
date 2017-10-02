@@ -9,13 +9,22 @@ object SampleStatusesHashtagPrinter extends App {
   val client = TwitterStreamingClient()
 
   def printHashtags(tweet: Tweet) = tweet.entities match {
-    case None => _
+    case None => ()
     case Some(e) => e.hashtags.foreach { h =>
       println(h.text)
     }
   }
 
-  client.sampleStatuses() {
-    case tweet: Tweet => printHashtags(tweet)
+  def filterTweetByHashtag(tweet: Tweet, myAwesomeHashtag: String): Option[Tweet] = tweet.entities match {
+    case None => None
+    case Some(e) =>
+      val hashtagTexts = e.hashtags.map(_.text.toUpperCase)
+      if (hashtagTexts.contains(myAwesomeHashtag.toUpperCase)) {
+        Some(tweet)
+      } else None
+  }
+
+  client.firehoseStatuses() {
+    case tweet: Tweet => filterTweetByHashtag(tweet, "scala")
   }
 }
