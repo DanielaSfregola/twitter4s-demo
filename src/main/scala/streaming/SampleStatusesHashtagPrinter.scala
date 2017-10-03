@@ -25,6 +25,6 @@ object SampleStatusesHashtagPrinter extends App {
   }
 
   client.firehoseStatuses() {
-    case tweet: Tweet => filterTweetByHashtag(tweet, "scala")
+    case tweet: Tweet => filterTweetByHashtag(tweet, "scala") map printHashtags
   }
 }
