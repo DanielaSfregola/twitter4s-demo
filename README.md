@@ -1,5 +1,6 @@
 # twitter4s-demo
-[![Build Status](https://travis-ci.org/DanielaSfregola/twitter4s-demo.svg?branch=master)](https://travis-ci.org/DanielaSfregola/twitter4s-demo) [![License](http://img.shields.io/:license-Apache%202-red.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt)
+[![Build Status](https://travis-ci.org/DanielaSfregola/twitter4s-demo.svg?branch=master)](https://travis-ci.org/DanielaSfregola/twitter4s-demo) [![License](http://img.shields.io/:license-Apache%202-red.svg)](http://www.apache.org/licenses/LICENSE-2.0.txt) [![Chat](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/danielasfregola/twitter4s)
+
 
 Examples on how to use [twitter4s](https://github.com/DanielaSfregola/twitter4s) library.
 
