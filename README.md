@@ -17,6 +17,10 @@ TwitterRestClient Examples
 - [SimpleStatistics](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/SimpleStatistics.scala) loads tweets from a file, in this case `src/main/resources/tweets/scalax.json`, and it computes some simple statistics: top hashtags, top active users, top mentioned users, top retweets, top favorite tweets.
 - [UserTopHashtags](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/UserTopHashtags.scala) displays the top 10 most common hashtags in a user timeline. In this example, we use Martin Odersky's account.
 - [TrendingTopics](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/TrendingTopics.scala) displays the top 10 trending topics worldwide, and in a given location (by text and by geolocation).
+- [LastTweetInTimeline](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/LastTweetInTimeline.scala) displays the last tweet in your timeline.
+
+TwitterStreamingClient Examples
+--------------------------------
 - [UserMentionStream](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/streaming/UserMentionStream.scala) receive stream of tweets mentioning yourself.
 
 Bugs
