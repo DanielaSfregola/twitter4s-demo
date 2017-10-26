@@ -6,6 +6,7 @@ import com.danielasfregola.twitter4s.entities.Tweet
 
 object SampleStatusesHashtagPrinter extends App {
 
+  // TODO - Make sure to define your consumer and access tokens and have firehose permissions!
   val client = TwitterStreamingClient()
 
   def printHashtags(tweet: Tweet) = tweet.entities match {
