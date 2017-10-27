@@ -22,6 +22,8 @@ TwitterRestClient Examples
 TwitterStreamingClient Examples
 --------------------------------
 - [UserMentionStream](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/streaming/UserMentionStream.scala) receive stream of tweets mentioning yourself.
+- [TweetTimelineStreamPrinter](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/streaming/TweetTimelineStreamPrinter.scala) print the tweets in your timeline using stream.
+- [StreamMentionReplyier](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/streaming/StreamMentionReplyier.scala) mark as favorite all tweets with hashtag "scala".
 
 Bugs
 ----
