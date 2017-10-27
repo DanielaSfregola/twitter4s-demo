@@ -15,7 +15,7 @@ object SampleStatusesHashtagPrinter extends App {
     }
   }
 
-  def filterTweetByHashtag(tweet: Tweet, myAwesomeHashtag: String): Option[Tweet] = tweet.entities.map { e =>
+  def filterTweetByHashtag(tweet: Tweet, myAwesomeHashtag: String): Option[Tweet] = tweet.entities.flatMap { e =>
       val hashtagTexts = e.hashtags.map(_.text.toUpperCase)
       if (hashtagTexts.contains(myAwesomeHashtag.toUpperCase)) Some(tweet)
       else None
