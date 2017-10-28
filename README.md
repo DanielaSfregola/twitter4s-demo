@@ -22,6 +22,7 @@ TwitterRestClient Examples
 TwitterStreamingClient Examples
 --------------------------------
 - [UserMentionStream](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/streaming/UserMentionStream.scala) receive stream of tweets mentioning yourself.
+- [StreamingWithLogging](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/streaming/StreamingWithLogging.scala) example on how to use logging in your twitter4s application.
 
 Bugs
 ----
