@@ -28,15 +28,6 @@ TwitterStreamingClient Examples
 Troubleshooting
 -----------------
 
-If you run the examples, and nothing happens, use the `scala.util.Try` type to debug. Here is an example:
-
-````scala
-  client.homeTimeline(count = 2) onComplete {
-    case Success(_) => println("all good ")
-    case Failure(ex) => println(ex)
-    }
-````
-
 If you have this exception `javax.net.ssl.SSLHandshakeException: General SSLEngine problem` add the certificate of the twitter api to jre truststore. 
 
 ```bash
