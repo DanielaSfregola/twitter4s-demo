@@ -25,6 +25,32 @@ TwitterStreamingClient Examples
 - [UserMentionStream](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/streaming/UserMentionStream.scala) receive stream of tweets mentioning yourself.
 - [StreamingWithLogging](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/streaming/StreamingWithLogging.scala) example on how to use logging in your twitter4s application.
 
+Troubleshooting
+-----------------
+
+If you run the examples, and nothing happens, use the `scala.util.Try` type to debug. Here is an example:
+
+````scala
+  client.homeTimeline(count = 2) onComplete {
+    case Success(_) => println("all good ")
+    case Failure(ex) => println(ex)
+    }
+````
+
+If you have this exception `javax.net.ssl.SSLHandshakeException: General SSLEngine problem` add the certificate of the twitter api to jre truststore. 
+
+```bash
+echo -n | \
+openssl s_client -connect api.twitter.com:443 </dev/null | \
+sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/twitter-api.crt && \
+sudo keytool -import -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -noprompt -alias twitterapi -file /tmp/twitter-api.crt
+```
+
+if the alias already exists, delete it before.
+```bash
+sudo keytool -delete -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -alias twitterapi
+```
+
 Bugs
 ----
 Spotted some bugs? Please, raise them in the [twitter4s](https://github.com/DanielaSfregola/twitter4s/issues) issue section.
