@@ -18,11 +18,29 @@ TwitterRestClient Examples
 - [UserTopHashtags](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/UserTopHashtags.scala) displays the top 10 most common hashtags in a user timeline. In this example, we use Martin Odersky's account.
 - [TrendingTopics](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/TrendingTopics.scala) displays the top 10 trending topics worldwide, and in a given location (by text and by geolocation).
 - [LastTweetInTimeline](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/LastTweetInTimeline.scala) displays the last tweet in your timeline.
+- [FollowersRegisteredTheSameYear](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/FollowersRegisteredTheSameYear.scala) display for a user, the followers registered the same year.
 
 TwitterStreamingClient Examples
 --------------------------------
 - [UserMentionStream](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/streaming/UserMentionStream.scala) receive stream of tweets mentioning yourself.
 - [StreamingWithLogging](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/streaming/StreamingWithLogging.scala) example on how to use logging in your twitter4s application.
+
+Troubleshooting
+-----------------
+
+If you have this exception `javax.net.ssl.SSLHandshakeException: General SSLEngine problem` add the certificate of the twitter api to jre truststore. 
+
+```bash
+echo -n | \
+openssl s_client -connect api.twitter.com:443 </dev/null | \
+sed -ne '/-BEGIN CERTIFICATE-/,/-END CERTIFICATE-/p' > /tmp/twitter-api.crt && \
+sudo keytool -import -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -storepass changeit -noprompt -alias twitterapi -file /tmp/twitter-api.crt
+```
+
+if the alias already exists, delete it before.
+```bash
+sudo keytool -delete -trustcacerts -keystore $JAVA_HOME/jre/lib/security/cacerts -alias twitterapi
+```
 
 Bugs
 ----
