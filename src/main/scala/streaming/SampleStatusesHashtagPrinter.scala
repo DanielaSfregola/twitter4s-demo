@@ -3,7 +3,6 @@ package streaming
 import com.danielasfregola.twitter4s.TwitterStreamingClient
 import com.danielasfregola.twitter4s.entities.Tweet
 
-
 object SampleStatusesHashtagPrinter extends App {
 
   // TODO - Make sure to define your consumer and access tokens!
@@ -16,9 +15,9 @@ object SampleStatusesHashtagPrinter extends App {
   }
 
   def filterTweetByHashtag(tweet: Tweet, myAwesomeHashtag: String): Option[Tweet] = tweet.entities.flatMap { e =>
-      val hashtagTexts = e.hashtags.map(_.text.toUpperCase)
-      if (hashtagTexts.contains(myAwesomeHashtag.toUpperCase)) Some(tweet)
-      else None
+    val hashtagTexts = e.hashtags.map(_.text.toUpperCase)
+    if (hashtagTexts.contains(myAwesomeHashtag.toUpperCase)) Some(tweet)
+    else None
   }
 
   client.firehoseStatuses() {

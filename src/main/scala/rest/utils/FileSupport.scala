@@ -23,10 +23,10 @@ trait FileSupport extends Json4sSupport {
   }
 
   private def toJson[T <: AnyRef](value: T): String = pretty(render(parse(Serialization.write(value))))
-  private def jsonAs[T: Manifest](json: String): T = Serialization.read[T](json)
+  private def jsonAs[T: Manifest](json: String): T  = Serialization.read[T](json)
 
   private def writeToFile(filename: String, content: String) = new PrintWriter(filename) { write(content); close }
-  private def readFromFile(filename: String): String = Source.fromFile(filename).mkString
+  private def readFromFile(filename: String): String         = Source.fromFile(filename).mkString
 
   def toFileAsJson[T <: AnyRef](filename: String, t: T) = writeToFile(filename, toJson(t))
 

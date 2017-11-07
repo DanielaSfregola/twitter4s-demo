@@ -10,7 +10,7 @@ import scala.concurrent.Future
 object UserMentionStream extends App {
 
   // TODO - Make sure to define your consumer and access tokens!
-  val restClient = TwitterRestClient()
+  val restClient      = TwitterRestClient()
   val streamingClient = TwitterStreamingClient()
 
   def fetchSelfUserId(): Future[Long] =
@@ -27,6 +27,6 @@ object UserMentionStream extends App {
 
   for {
     selfUserId <- fetchSelfUserId()
-    stream <- selfMentionStream(selfUserId)
+    stream     <- selfMentionStream(selfUserId)
   } yield stream
 }
