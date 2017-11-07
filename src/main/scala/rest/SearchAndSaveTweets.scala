@@ -10,7 +10,6 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.duration.Duration
 import scala.concurrent.{Await, Future}
 
-
 object SearchAndSaveTweets extends App with FileSupport {
 
   // TODO - Make sure to define your consumer and access tokens!
@@ -23,12 +22,12 @@ object SearchAndSaveTweets extends App with FileSupport {
     }
 
     client.searchTweet(query, count = 100, result_type = ResultType.Recent, max_id = max_id).flatMap { ratedData =>
-        val result = ratedData.data
-        val nextMaxId = extractNextMaxId(result.search_metadata.next_results)
-        val tweets = result.statuses
-        if (tweets.nonEmpty) searchTweets(query, nextMaxId).map(_ ++ tweets)
-        else Future(tweets.sortBy(_.created_at))
-      } recover { case _ => Seq.empty }
+      val result    = ratedData.data
+      val nextMaxId = extractNextMaxId(result.search_metadata.next_results)
+      val tweets    = result.statuses
+      if (tweets.nonEmpty) searchTweets(query, nextMaxId).map(_ ++ tweets)
+      else Future(tweets.sortBy(_.created_at))
+    } recover { case _ => Seq.empty }
   }
 
   val filename = {

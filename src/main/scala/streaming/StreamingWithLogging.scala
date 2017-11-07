@@ -5,7 +5,6 @@ import com.danielasfregola.twitter4s.entities.Tweet
 import com.danielasfregola.twitter4s.processors.TwitterProcessor._
 import com.typesafe.scalalogging.LazyLogging
 
-
 object StreamingWithLogging extends App with LazyLogging {
 
   // Make sure to define the following env variables:

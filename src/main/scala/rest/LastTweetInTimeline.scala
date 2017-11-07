@@ -13,7 +13,7 @@ object LastTweetInTimeline extends App {
     val tweet = ratedData.data.headOption
     tweet match {
       case Some(t) => println(t.text)
-      case None => println("No tweets in timeline")
+      case None    => println("No tweets in timeline")
     }
   }
 }
