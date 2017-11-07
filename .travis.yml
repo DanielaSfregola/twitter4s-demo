@@ -15,7 +15,7 @@ env:
   - SBT_OPTS = -XX:MaxPermSize=1024M -XX:+UseConcMarkSweepGC -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled
 
 script:
-  - travis_retry sbt compile
+    - travis_retry sbt compile sbt:scala_fmt::test scalafmt::test
 
 scala:
   - 2.12.3

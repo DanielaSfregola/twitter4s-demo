@@ -7,12 +7,17 @@ scalaVersion := "2.12.1"
 resolvers += Resolver.sonatypeRepo("releases")
 
 scalacOptions in ThisBuild ++= Seq("-language:postfixOps",
-  "-language:implicitConversions",
-  "-language:existentials",
-  "-feature",
-  "-deprecation")
+                                   "-language:implicitConversions",
+                                   "-language:existentials",
+                                   "-feature",
+                                   "-deprecation")
+
+scalafmtTestOnCompile := true  
+scalafmtShowDiff in scalafmt := true 
 
 libraryDependencies ++= Seq(
-  "com.danielasfregola" %% "twitter4s" % "5.2",
-  "ch.qos.logback" % "logback-classic" % "1.1.9"
+  "com.danielasfregola" %% "twitter4s"      % "5.2",
+  "ch.qos.logback"      % "logback-classic" % "1.1.9"
 )
+
+
