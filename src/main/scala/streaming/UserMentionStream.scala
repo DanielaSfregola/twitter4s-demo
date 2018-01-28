@@ -3,8 +3,8 @@ package streaming
 import com.danielasfregola.twitter4s.entities.Tweet
 import com.danielasfregola.twitter4s.entities.enums.WithFilter
 import com.danielasfregola.twitter4s.{TwitterRestClient, TwitterStreamingClient}
-import scala.concurrent.ExecutionContext.Implicits.global
 
+import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 object UserMentionStream extends App {

@@ -7,8 +7,7 @@ import com.typesafe.config.ConfigFactory
 import rest.utils.FileSupport
 
 import scala.concurrent.ExecutionContext.Implicits.global
-import scala.concurrent.duration.Duration
-import scala.concurrent.{Await, Future}
+import scala.concurrent.Future
 
 object SearchAndSaveTweets extends App with FileSupport {
 

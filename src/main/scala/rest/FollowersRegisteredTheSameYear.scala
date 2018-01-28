@@ -3,7 +3,7 @@ package rest
 import java.util.Date
 
 import com.danielasfregola.twitter4s.TwitterRestClient
-import com.danielasfregola.twitter4s.entities.{RatedData, User}
+import com.danielasfregola.twitter4s.entities.User
 
 import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future

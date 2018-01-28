@@ -1,26 +1,14 @@
 package rest.utils
 
 import java.io.PrintWriter
-import java.text.SimpleDateFormat
 
-import com.danielasfregola.twitter4s.http.serializers.CustomSerializers
-import de.heikoseeberger.akkahttpjson4s.Json4sSupport
+import com.danielasfregola.twitter4s.http.serializers.JsonSupport
 import org.json4s.native.JsonMethods._
 import org.json4s.native.Serialization
-import org.json4s.{DefaultFormats, Formats}
 
 import scala.io.Source
 
-trait FileSupport extends Json4sSupport {
-
-  implicit def json4sFormats: Formats = defaultFormats ++ CustomSerializers.all
-
-  val defaultFormats = new DefaultFormats {
-    override def dateFormatter = {
-      val simpleDateFormat = new SimpleDateFormat("EEE MMM dd HH:mm:ss ZZZZ yyyy")
-      simpleDateFormat
-    }
-  }
+trait FileSupport extends JsonSupport {
 
   private def toJson[T <: AnyRef](value: T): String = pretty(render(parse(Serialization.write(value))))
   private def jsonAs[T: Manifest](json: String): T  = Serialization.read[T](json)

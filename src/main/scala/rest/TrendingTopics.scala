@@ -1,12 +1,9 @@
 package rest
 
 import com.danielasfregola.twitter4s.TwitterRestClient
-import com.danielasfregola.twitter4s.entities.{AccessToken, ConsumerToken, LocationTrends}
-import scala.concurrent.ExecutionContext.Implicits.global
+import com.danielasfregola.twitter4s.entities.LocationTrends
 
-import scala.concurrent.Await
-import scala.concurrent.duration.Duration
-import scala.util.{Success, Try}
+import scala.concurrent.ExecutionContext.Implicits.global
 
 object TrendingTopics extends App {
 
