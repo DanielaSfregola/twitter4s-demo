@@ -1,6 +1,6 @@
 package rest
 
-import java.util.Date
+import java.util.{Calendar, Date}
 
 import com.danielasfregola.twitter4s.TwitterRestClient
 import com.danielasfregola.twitter4s.entities.User
@@ -10,7 +10,10 @@ import scala.concurrent.Future
 
 object FollowersRegisteredTheSameYear extends App {
   def getSameRegistrationYearFollowers(creationDate: Date, followers: Set[User]): Set[User] = {
-    followers.filter(_.created_at.getYear == creationDate.getYear)
+    def getYear(date: Date): Int =
+      (new Calendar.Builder()).setInstant(date).build().get(Calendar.YEAR) - 1900
+
+    followers.filter(u => getYear(u.created_at) == getYear(creationDate))
   }
 
   def printUserRegistration(follower: User): Unit = {
