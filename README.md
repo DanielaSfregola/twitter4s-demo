@@ -19,6 +19,7 @@ TwitterRestClient Examples
 - [TrendingTopics](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/TrendingTopics.scala) displays the top 10 trending topics worldwide, and in a given location (by text and by geolocation).
 - [LastTweetInTimeline](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/LastTweetInTimeline.scala) displays the last tweet in your timeline.
 - [FollowersRegisteredTheSameYear](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/FollowersRegisteredTheSameYear.scala) display for a user, the followers registered the same year.
+- [ShowPrivacyPolicy](https://github.com/DanielaSfregola/twitter4s-demo/blob/master/src/main/scala/rest/ShowPrivacyPolicy.scala) display Twitter's Privacy Policy.
 
 TwitterStreamingClient Examples
 --------------------------------
