@@ -10,7 +10,7 @@ object ShowPrivacyPolicy extends App {
   val client = TwitterRestClient()
 
   client.privacyPolicy().onComplete {
-    case Success(r) => println(s"${r.data.privacy}")
+    case Success(r) => println(r.data.privacy)
     case Failure(t) => println(t.getMessage)
   }
 }
