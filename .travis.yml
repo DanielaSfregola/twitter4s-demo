@@ -11,18 +11,12 @@ before_cache:
 
 language: scala
 
-env:
-  - SBT_OPTS = -XX:MaxPermSize=1024M -XX:+UseConcMarkSweepGC -XX:+CMSPermGenSweepingEnabled -XX:+CMSClassUnloadingEnabled
-
 script:
     - travis_retry sbt compile scalafmt::test
 
 scala:
   - 2.12.3
   - 2.11.8
-
-jdk:
-  - oraclejdk8
 
 # whitelist
 branches:
