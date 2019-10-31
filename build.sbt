@@ -2,7 +2,7 @@ name := "twitter4s-demo"
 
 version := "0.1"
 
-scalaVersion := "2.12.0"
+scalaVersion := "2.13.0"
 
 resolvers += Resolver.sonatypeRepo("releases")
 
@@ -22,7 +22,7 @@ scalafmtTestOnCompile := true
 scalafmtShowDiff in scalafmt := true
 
 libraryDependencies ++= Seq(
-  "com.danielasfregola" %% "twitter4s"      % "6.1",
+  "com.danielasfregola" %% "twitter4s"      % "6.2",
   "ch.qos.logback"      % "logback-classic" % "1.2.3"
 )
 

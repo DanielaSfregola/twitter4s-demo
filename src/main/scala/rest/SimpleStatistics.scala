@@ -11,7 +11,7 @@ object SimpleStatistics extends App with FileSupport {
   def getTweets(filename: String): Seq[Tweet] = fromJsonFileAs[Seq[Tweet]](filename)
 
   def top[T](f: Tweet => Seq[T], n: Int)(tweets: Seq[Tweet]): Seq[Record[T]] = {
-    val tCount = tweets.flatMap(f).groupBy(identity).mapValues(_.size)
+    val tCount = tweets.flatMap(f).groupBy(identity).map { case (k, v) => k -> v.size }
     tCount.toSeq.sortBy { case (t, frequency) => -frequency }.take(n)
   }
 
@@ -21,7 +21,7 @@ object SimpleStatistics extends App with FileSupport {
         .map { entities =>
           entities.hashtags.map(_.text.toLowerCase)
         }
-        .getOrElse(Seq.empty)
+        .getOrElse(List.empty)
     }
 
     val result = top[String](extractHashtags, n)(tweets)
@@ -45,7 +45,7 @@ object SimpleStatistics extends App with FileSupport {
 
   def topMentionedUsers(tweets: Seq[Tweet], n: Int = 10) = {
     def extractMentions: Tweet => Seq[String] = { tweet =>
-      tweet.entities.map(_.user_mentions.map(_.screen_name)).getOrElse(Seq.empty)
+      tweet.entities.map(_.user_mentions.map(_.screen_name)).getOrElse(List.empty)
     }
 
     val result = top[String](extractMentions, n)(tweets)

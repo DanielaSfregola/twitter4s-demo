@@ -20,7 +20,7 @@ trait FileSupport {
     close()
   }
 
-  private def readFromFile(filename: String): String         = Source.fromFile(filename).mkString
+  private def readFromFile(filename: String): String = Source.fromFile(filename).mkString
 
   def toFileAsJson[T <: AnyRef](filename: String, t: T) = writeToFile(filename, toJson(t))
 

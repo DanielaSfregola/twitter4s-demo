@@ -9,11 +9,11 @@ object MyTopHashtags extends App {
 
   def getTopHashtags(tweets: Seq[Tweet], n: Int = 10): Seq[(String, Int)] = {
     val hashtags: Seq[Seq[HashTag]] = tweets.map { tweet =>
-      tweet.entities.map(_.hashtags).getOrElse(Seq.empty)
+      tweet.entities.map(_.hashtags).getOrElse(List.empty)
     }
     val hashtagTexts: Seq[String]            = hashtags.flatten.map(_.text.toLowerCase)
-    val hashtagFrequencies: Map[String, Int] = hashtagTexts.groupBy(identity).mapValues(_.size)
-    hashtagFrequencies.toSeq.sortBy { case (entity, frequency) => -frequency }.take(n)
+    val hashtagFrequencies: Map[String, Int] = hashtagTexts.groupBy(identity).map { case (k, v) => k -> v.size }
+    hashtagFrequencies.toSeq.sortBy { case (_, frequency) => -frequency }.take(n)
   }
 
   // TODO - Make sure to define your consumer and access tokens!
