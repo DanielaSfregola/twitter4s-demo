@@ -1,6 +1,6 @@
 package rest
 
-import java.util.{Calendar, Date}
+import java.time.{Instant, LocalDateTime, ZoneOffset}
 
 import com.danielasfregola.twitter4s.TwitterRestClient
 import com.danielasfregola.twitter4s.entities.User
@@ -9,18 +9,18 @@ import scala.concurrent.ExecutionContext.Implicits.global
 import scala.concurrent.Future
 
 object FollowersRegisteredTheSameYear extends App {
-  def getSameRegistrationYearFollowers(creationDate: Date, followers: Set[User]): Set[User] = {
-    def getYear(date: Date): Int =
-      (new Calendar.Builder()).setInstant(date).build().get(Calendar.YEAR) - 1900
 
-    followers.filter(u => getYear(u.created_at) == getYear(creationDate))
+  def getSameRegistrationYearFollowers(creation: Instant, followers: Set[User]): Set[User] = {
+    def getYear(instant: Instant): Int = LocalDateTime.ofInstant(creation, ZoneOffset.UTC).getYear
+
+    followers.filter(u => getYear(u.created_at) == getYear(creation))
   }
 
   def printUserRegistration(follower: User): Unit = {
     println(s"${follower.screen_name} created at ${follower.created_at}")
   }
 
-  // TODO - Make sure to define your consumer and access tokens!
+  // Make sure to define your consumer and access tokens via ENV variables!
   val restClient     = TwitterRestClient()
   val userScreenName = "ScalaIO_FR"
 
