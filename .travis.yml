@@ -17,8 +17,8 @@ script:
     - travis_retry sbt compile scalafmt::test
 
 scala:
+  - 2.13.0
   - 2.12.3
-  - 2.11.8
 
 # whitelist
 branches:
