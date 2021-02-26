@@ -2,7 +2,7 @@ name := "twitter4s-demo"
 
 version := "0.1"
 
-scalaVersion := "2.13.0"
+scalaVersion := "2.13.5"
 
 resolvers += Resolver.sonatypeRepo("releases")
 
