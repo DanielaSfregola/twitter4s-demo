@@ -22,7 +22,7 @@ object TrendingTopics extends App {
   } yield printTrendingTopics(globalTrendsResult)
 
   lazy val ukTrends = for {
-    locations <- client.locationTrends.map(_.data)
+    locations <- client.locationTrends().map(_.data)
     ukWoeid = locations.find(_.name == "United Kingdom").map(_.woeid)
     if ukWoeid.isDefined
     ukTrendsResult <- client.trends(ukWoeid.get).map(_.data)
