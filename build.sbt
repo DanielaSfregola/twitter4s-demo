@@ -22,7 +22,7 @@ scalafmtTestOnCompile := true
 scalafmtShowDiff in scalafmt := true
 
 libraryDependencies ++= Seq(
-  "com.danielasfregola" %% "twitter4s"      % "7.0",
+  "com.danielasfregola" %% "twitter4s"      % "7.1",
   "ch.qos.logback"      % "logback-classic" % "1.2.11"
 )
 
